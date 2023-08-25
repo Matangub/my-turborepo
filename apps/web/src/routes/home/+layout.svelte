@@ -1,11 +1,8 @@
 <script lang="ts">
-	import Header from '../../components/Header.svelte';
-	import type { LayoutData } from './$types';
-
-	export let data: LayoutData;
+  import Header from '../../components/Header.svelte';
 </script>
 
 <Header />
 <div class="p-8">
-	<slot />
+  <slot />
 </div>

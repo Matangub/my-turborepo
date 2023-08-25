@@ -3,10 +3,10 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export default {
-	schema: './src/lib/schema.ts',
-	out: './drizzle',
-	driver: 'pg',
-	dbCredentials: {
-		connectionString: process.env.VITE_CONNECTION_STRING!
-	}
+  schema: './src/lib/schema.ts',
+  out: './drizzle',
+  driver: 'pg',
+  dbCredentials: {
+    connectionString: process.env.VITE_CONNECTION_STRING!
+  }
 } satisfies Config;
