@@ -1,0 +1,1 @@
+ALTER TABLE "badges" ADD PRIMARY KEY ("jobs_id");

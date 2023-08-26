@@ -4,30 +4,33 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import z from 'zod';
 
 export const user = pgTable('user', {
-  id: varchar('id', { length: 15 }).primaryKey(),
+  id: varchar('id').primaryKey(),
   username: varchar('username', { length: 255 }).notNull()
 });
 
+export const insertUserSchema = createInsertSchema(user);
+export const selectUserSchema = createSelectSchema(user);
+
 export const userKey = pgTable('user_key', {
   id: varchar('id', { length: 255 }).primaryKey(),
-  user_id: varchar('user_id', { length: 15 }).references(() => user.id),
+  user_id: varchar('user_id').references(() => user.id),
   hashed_password: varchar('hashed_password', { length: 255 })
 });
 
 export const userSessions = pgTable('user_session', {
   id: varchar('id', { length: 127 }).primaryKey(),
-  user_id: varchar('user_id', { length: 15 }).references(() => user.id),
+  user_id: varchar('user_id').references(() => user.id),
   active_expires: bigint('active_expires', { mode: 'number' }).notNull(),
   idle_expires: bigint('idle_expires', { mode: 'number' }).notNull()
 });
 
 export const jobs = pgTable('jobs', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  user_id: varchar('user_id', { length: 15 })
+  id: uuid('id').primaryKey().defaultRandom().notNull(),
+  user_id: varchar('user_id')
     .unique()
     .notNull()
     .references(() => user.id),
-  title: varchar('title').notNull(),
+  title: varchar('title', { length: 15 }).notNull(),
   description: varchar('description').notNull(),
   company: varchar('company').notNull(),
   linkedin: varchar('linkedin').notNull(),
@@ -68,6 +71,7 @@ export const labelEnum = pgEnum('label', [
 ]);
 
 export const badges = pgTable('badges', {
+  id: uuid('id').primaryKey().defaultRandom().notNull(),
   jobs_id: uuid('jobs_id')
     .references(() => jobs.id, { onDelete: 'cascade' })
     .notNull(),
@@ -93,3 +97,7 @@ export const insertJobSchema = createInsertSchema(jobs, {
 export const selectJobSchema = createSelectSchema(jobs);
 
 export const deleteJobSchema = selectJobSchema.pick({ id: true });
+
+export const insertJobWithBadges = insertJobSchema.extend({
+  badges: z.array(insertBadgeSchema.shape.label).min(1).max(3)
+});

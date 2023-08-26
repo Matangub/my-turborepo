@@ -4,6 +4,7 @@ import {
   deleteJobSchema,
   insertBadgeSchema,
   insertJobSchema,
+  insertJobWithBadges,
   jobs
 } from '../../lib/schema';
 import { db } from '../../lib/server/db';
@@ -18,10 +19,6 @@ import { NeonDbError } from '@neondatabase/serverless';
 
 const paginationSchema = z.object({
   page: z.number().min(1).default(1)
-});
-
-const insertJobWithBadges = insertJobSchema.extend({
-  badges: z.array(insertBadgeSchema.shape.label).min(1).max(3)
 });
 
 const DEFAULT_PAGE = 1;
