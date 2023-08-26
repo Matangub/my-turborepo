@@ -10,11 +10,12 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check --ignore-path=../../.prettierignore . && eslint \"src\"",
     "format": "prettier --write --ignore-path=../../.prettierignore .",
-    "generate": "drizzle-kit generate:pg",
-    "push": "drizzle-kit push:pg",
-    "pull": "drizzle-kit introspect:pg",
-    "studio": "drizzle-kit studio",
-    "drop": "drizzle-kit drop",
+    "drizzle-generate": "drizzle-kit generate:pg",
+    "drizzle-push": "drizzle-kit push:pg",
+    "drizzle-pull": "drizzle-kit introspect:pg",
+    "drizzle-studio": "drizzle-kit studio",
+    "drizzle-drop": "drizzle-kit drop",
+    "drizzle-migrate": "pnpm run drizzle-pull && pnpm run drizzle-generate && pnpm run drizzle-push",
     "seed": "NODE_OPTIONS='--experimental-specifier-resolution=node' ts-node --esm ./src/lib/server/scripts/general.ts"
   },
   "dependencies": {

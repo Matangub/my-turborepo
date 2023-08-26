@@ -4,7 +4,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "seed": "turbo run seed",
+    "seed": "turbo run seed --filter=web",
+    "drizzle-migrate": "turbo run drizzle-migrate --filter=web",
     "format": "prettier --write ."
   },
   "devDependencies": {

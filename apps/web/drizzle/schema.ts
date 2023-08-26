@@ -22,6 +22,7 @@ export const jobs = pgTable("jobs", {
 export const badges = pgTable("badges", {
 	jobsId: uuid("jobs_id").notNull().references(() => jobs.id, { onDelete: "cascade" } ),
 	label: label("label").notNull(),
+	id: uuid("id").defaultRandom().notNull(),
 });
 
 export const user = pgTable("user", {
