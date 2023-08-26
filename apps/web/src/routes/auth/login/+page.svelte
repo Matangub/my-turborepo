@@ -3,8 +3,6 @@
   import type { ActionData } from './$types';
   export let data;
   export let form: ActionData;
-
-  console.log('data', data);
 </script>
 
 <section class="bg-gray-50 dark:bg-gray-900 m-0">

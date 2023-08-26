@@ -31,14 +31,13 @@ export const actions: Actions = {
       // find user by key
       // and validate password
       const key = await auth.useKey('username', username.toLowerCase(), password);
-      console.log('key', key);
       const session = await auth.createSession({
         userId: key.userId,
         attributes: {}
       });
       locals.auth.setSession(session); // set session cookie
     } catch (e) {
-      console.log('e', e);
+      console.error('e', e);
       if (
         e instanceof LuciaError &&
         (e.message === 'AUTH_INVALID_KEY_ID' || e.message === 'AUTH_INVALID_PASSWORD')
