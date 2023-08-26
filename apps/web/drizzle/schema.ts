@@ -7,7 +7,7 @@ export const label = pgEnum("label", ['Rust', 'Golang', 'NodeJS', 'Svelte', 'Vue
 export const jobs = pgTable("jobs", {
 	id: uuid("id").defaultRandom().primaryKey().notNull(),
 	userId: varchar("user_id").notNull().references(() => user.id),
-	title: varchar("title").notNull(),
+	title: varchar("title", { length: 15 }).notNull(),
 	description: varchar("description").notNull(),
 	company: varchar("company").notNull(),
 	role: varchar("role").notNull(),
@@ -22,7 +22,7 @@ export const jobs = pgTable("jobs", {
 export const badges = pgTable("badges", {
 	jobsId: uuid("jobs_id").notNull().references(() => jobs.id, { onDelete: "cascade" } ),
 	label: label("label").notNull(),
-	id: uuid("id").defaultRandom().notNull(),
+	id: uuid("id").defaultRandom().primaryKey().notNull(),
 });
 
 export const user = pgTable("user", {

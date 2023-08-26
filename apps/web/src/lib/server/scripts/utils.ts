@@ -3,5 +3,5 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 dotenv.config();
 
-const sql = postgres(process.env.VITE_CONNECTION_STRING!, { max: 1 });
+const sql = postgres(process.env.POSTGRES_CONNECTION_STRING!, { max: 1 });
 export const seedingDb = drizzle(sql);
