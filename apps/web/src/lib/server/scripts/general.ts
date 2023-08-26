@@ -1,6 +1,7 @@
 import { generateMock } from '@anatine/zod-mock';
 import { faker } from '@faker-js/faker';
-const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor purus lorem, a varius mauris finibus nec. Mauris nulla nulla, ultrices in congue dapibus, pretium et purus. Fusce sit amet consequat nulla, quis cursus sem. Maecenas tempus, lectus non pellentesque accumsan, nunc velit porta elit, vel iaculis mi elit in eros. Nullam in placerat metus, sed congue quam. Nullam maximus mattis tellus, rutrum varius nunc. Integer sit amet tellus a augue maximus ullamcorper a id tellus. Ut et ligula porta, venenatis ex vitae, suscipit mauris.`;
+const description =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor purus lorem, a varius mauris finibus nec. Mauris nulla nulla, ultrices in congue dapibus, pretium et purus. Fusce sit amet consequat nulla, quis cursus sem. Maecenas tempus, lectus non';
 
 import { badges, insertJobWithBadges, jobs, user } from '../../schema';
 import { seedingDb } from './utils';
