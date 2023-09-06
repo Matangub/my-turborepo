@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1692977855759,
-      "tag": "0000_material_sugar_man",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1693033625412,
-      "tag": "0001_fast_valkyrie",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1693034777726,
-      "tag": "0002_amused_obadiah_stane",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1693034807576,
-      "tag": "0003_crazy_red_shift",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1693066658222,
-      "tag": "0004_curly_mongoose",
+      "when": 1694024872370,
+      "tag": "0000_sloppy_marrow",
       "breakpoints": true
     }
   ]

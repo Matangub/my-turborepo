@@ -1,29 +1,8 @@
-import { pgTable, foreignKey, unique, pgEnum, uuid, varchar, bigint } from "drizzle-orm/pg-core"
+import { pgTable, pgEnum, varchar, foreignKey, bigint } from "drizzle-orm/pg-core"
 
 import { sql } from "drizzle-orm"
 export const label = pgEnum("label", ['Rust', 'Golang', 'NodeJS', 'Svelte', 'Vue', 'React', 'Angular', 'Typescript', 'Javascript', 'Java', 'CSS', 'HTML', 'Python', 'Git', 'Github', 'Gitlab', 'Jenkins', 'Terraform', 'Docker', 'Kubernetes', 'Azure', 'GCE', 'AWS'])
 
-
-export const jobs = pgTable("jobs", {
-	id: uuid("id").defaultRandom().primaryKey().notNull(),
-	userId: varchar("user_id").notNull().references(() => user.id),
-	title: varchar("title", { length: 15 }).notNull(),
-	description: varchar("description").notNull(),
-	company: varchar("company").notNull(),
-	linkedin: varchar("linkedin").notNull(),
-	role: varchar("role").notNull(),
-},
-(table) => {
-	return {
-		jobsUserIdUnique: unique("jobs_user_id_unique").on(table.userId),
-	}
-});
-
-export const badges = pgTable("badges", {
-	id: uuid("id").defaultRandom().primaryKey().notNull(),
-	jobsId: uuid("jobs_id").notNull().references(() => jobs.id, { onDelete: "cascade" } ),
-	label: label("label").notNull(),
-});
 
 export const user = pgTable("user", {
 	id: varchar("id").primaryKey().notNull(),

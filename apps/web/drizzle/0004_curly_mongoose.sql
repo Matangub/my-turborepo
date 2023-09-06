@@ -1,1 +1,0 @@
-ALTER TABLE "jobs" ALTER COLUMN "title" SET DATA TYPE varchar(15);
