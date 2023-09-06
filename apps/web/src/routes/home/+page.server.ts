@@ -18,7 +18,7 @@ import { auth } from '../../lib/server/lucia';
 import { NeonDbError } from '@neondatabase/serverless';
 
 const paginationSchema = z.object({
-  page: z.number().min(1).default(1)
+  page: z.number().default(1)
 });
 
 const DEFAULT_PAGE = 1;
@@ -26,7 +26,7 @@ const DEFAULT_PAGE = 1;
 export const load = (async ({ locals, url: { searchParams } }) => {
   const session = await locals.auth.validate();
   const paginationData = paginationSchema.parse({
-    page: Number(searchParams.get('page') ?? DEFAULT_PAGE)
+    page: Math.max(Number(searchParams.get('page') ?? DEFAULT_PAGE), DEFAULT_PAGE)
   });
 
   const data = await db.query.jobs.findMany({

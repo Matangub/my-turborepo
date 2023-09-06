@@ -10,8 +10,8 @@ export const jobs = pgTable("jobs", {
 	title: varchar("title", { length: 15 }).notNull(),
 	description: varchar("description").notNull(),
 	company: varchar("company").notNull(),
-	role: varchar("role").notNull(),
 	linkedin: varchar("linkedin").notNull(),
+	role: varchar("role").notNull(),
 },
 (table) => {
 	return {
@@ -20,9 +20,9 @@ export const jobs = pgTable("jobs", {
 });
 
 export const badges = pgTable("badges", {
+	id: uuid("id").defaultRandom().primaryKey().notNull(),
 	jobsId: uuid("jobs_id").notNull().references(() => jobs.id, { onDelete: "cascade" } ),
 	label: label("label").notNull(),
-	id: uuid("id").defaultRandom().primaryKey().notNull(),
 });
 
 export const user = pgTable("user", {
